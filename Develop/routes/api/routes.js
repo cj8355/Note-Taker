@@ -4,7 +4,7 @@ const path = require('path');
 module.exports = app => {
 
     // Setup notes variable
-    fs.readFile("db/db.json","utf8", (err, data) => {
+    fs.readFile("routes/db/db.json","utf8", (err, data) => {
 
         if (err) throw err;
 
@@ -21,6 +21,7 @@ module.exports = app => {
         app.post("/api/notes", function(req, res) {
             // Receives a new note, adds it to db.json, then returns the new note
             let newNote = req.body;
+            newNote.id = notes.length + 1;
             notes.push(newNote);
             updateDb();
             return console.log("Added new note: "+newNote.title);
@@ -34,7 +35,7 @@ module.exports = app => {
 
         // Deletes a note with specific id
         app.delete("/api/notes/:id", function(req, res) {
-            notes.splice(req.params.id, 1);
+            notes.splice(notes.findIndex( i => i.id === req.params.id), 1);
             updateDb();
             console.log("Deleted note with id "+req.params.id);
         });
@@ -42,17 +43,17 @@ module.exports = app => {
 
         // Display notes.html when /notes is accessed
         app.get('/notes', function(req,res) {
-            res.sendFile(path.join(__dirname, "./public/notes.html"));
+            res.sendFile(path.join(__dirname, "../public/notes.html"));
         });
         
         // Display index.html when all other routes are accessed
         app.get('*', function(req,res) {
-            res.sendFile(path.join(__dirname, "./public/index.html"));
+            res.sendFile(path.join(__dirname, "../public/index.html"));
         });
 
         //updates the json file whenever a note is added or deleted
         function updateDb() {
-            fs.writeFile("./routes/db/db.json",JSON.stringify(notes,'\t'),err => {
+            fs.writeFile("routes/db/db.json",JSON.stringify(notes,'\t'),err => {
                 if (err) throw err;
                 return true;
             });
