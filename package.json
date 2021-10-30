@@ -1,22 +1,16 @@
 {
   "name": "note-taker",
   "version": "1.0.0",
-  "description": "Note taker",
-  "main": "index.js",
+  "description": "",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cj8355/Note-Taker.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/cj8355/Note-Taker/issues"
-  },
-  "homepage": "https://github.com/cj8355/Note-Taker#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.14"
   }
 }
