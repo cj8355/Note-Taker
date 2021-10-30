@@ -4,7 +4,7 @@ const path = require('path');
 module.exports = app => {
 
     // Setup notes variable
-    fs.readFile("routes/db/db.json","utf8", (err, data) => {
+    fs.readFile(path.join(__dirname, "../db/db.json"),"utf8", (err, data) => {
 
         if (err) throw err;
 
@@ -38,6 +38,7 @@ module.exports = app => {
             notes.splice(notes.findIndex( i => i.id === req.params.id), 1);
             updateDb();
             console.log("Deleted note with id "+req.params.id);
+            
         });
 
 
