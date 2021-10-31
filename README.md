@@ -1,6 +1,6 @@
 # Note Taker
 
-Link:
+Link: https://note-taker19775.herokuapp.com/
 
 ## Description
 Note Taker App using express to store and display notes.
@@ -16,7 +16,7 @@ Note Taker App using express to store and display notes.
 
 ## Installation
 The following necessary dependencies must be installed to run the
-application properly: Inquirer, Express, Console.Table, Dotenv, MySQL2
+application properly: Inquirer, Express, Dotenv, MySQL
 
 ## Usage
 See Video demo
